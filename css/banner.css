@@ -12,11 +12,10 @@
 }
 .banner_slide_item {
   display: block;
-  border-radius: 15px;
   overflow: hidden;
 
   height: 345px;
-  background-color: red;
+  border-radius: 15px;
 }
 
 .banner_slide_item img {
@@ -26,27 +25,26 @@
   object-fit: cover;
 }
 .banner_slide_prev {
-  position: absolute;
-  left: 0px;
-  top: 50%;
-  z-index: 100;
-
-  transform: translateY(-50%) translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: 1px solid #e5e5e5;
-  background-color: rgba(255, 255, 255, 0.5);
+
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.13);
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  z-index: 100;
 
   width: 48px;
   height: 48px;
-  border-radius: 24px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
 
   cursor: pointer;
 
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.13);
+  transform: translateY(-50%) translateX(-50%);
+  border-radius: 24px;
 }
 
 .banner_slide_prev img {
@@ -54,28 +52,29 @@
 }
 
 .banner_slide_next {
-  position: absolute;
-  right: 0px;
-  top: 50%;
-  z-index: 100;
-
-  transform: translateY(-50%) translateX(50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: 1px solid #e5e5e5;
-  background-color: rgba(255, 255, 255, 0.5);
+
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.13);
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  z-index: 100;
 
   width: 48px;
   height: 48px;
-  border-radius: 24px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
 
   cursor: pointer;
 
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.13);
+  transform: translateY(-50%) translateX(50%);
+  border-radius: 24px;
 }
+
+/* 처음에는 페이지네이션이 안보인다. */
 
 .banner_slide_pg {
   display: none;
@@ -85,16 +84,60 @@
   .banner_slide_item {
     height: 275px;
   }
-}
 
-@media all and (max-width: 1024px) {
-  .banner_slide_item {
-    height: 202px;
+  @media all and (max-width: 1024px) {
+    .banner_slide_item {
+      height: 202px;
+    }
+  }
+  /* 다중으로 선택함. 쉼표(,)로 구분함 */
+  .banner_slide_next,
+  .banner_slide_prev {
+    display: none;
+  }
+
+  /* 페이지네이션이 보여야 함 */
+  .banner_slide_pg {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  /* 기본 버튼들의 모양 css */
+  .banner_slide_pg .swiper-pagination-bullet {
+  }
+  /* 포커스 된 버튼의 모양 css */
+  .banner_slide_pg .swiper-pagination-bullet-active {
+    background-color: #000000;
   }
 }
 
 @media all and (max-width: 760px) {
   .sw_banner {
     max-width: 350px;
+  }
+  /* 페이지네이션 위치 조절 */
+  .banner_slide_pg {
+    align-items: center;
+
+    padding-top: 0px;
+    /* 위치말고 내용물만 이동함 */
+    transform: translateY(-12px);
+    /* z-index가 안되는 경우는 position이 없어서. */
+    position: relative;
+    z-index: 100;
+  }
+  .banner_slide_pg .swiper-pagination-bullet {
+    background-color: #e5e5e5;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    border: 1px solid #e5e5e5;
+  }
+  .banner_slide_pg .swiper-pagination-bullet-active {
+    background-color: #e5e5e5;
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #e5e5e5;
   }
 }
