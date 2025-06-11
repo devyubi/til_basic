@@ -139,6 +139,7 @@
   font-weight: 700;
 }
 .tour_slide_prev {
+  z-index: 999;
   position: absolute;
   left: 0;
   top: 50%;
@@ -164,6 +165,7 @@
 }
 
 .tour_slide_next {
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,4 +205,21 @@
   color: #333;
   font-weight: 700;
   border-radius: 200px;
+}
+
+.swiper-button-disabled {
+  display: none !important;
+}
+
+/* 반응형 코드 */
+@media all and (max-width: 1280px) {
+}
+@media all and (max-width: 1024px) {
+  .tour_slide_wrap{
+    width: 1024px;
+  }
+}
+@media all and (max-width: 960px) {
+}
+@media all and (max-width: 760px) {
 }
