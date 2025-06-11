@@ -266,6 +266,29 @@
 - 아이콘은 https://react-icons.github.io/react-icons/ 활용
 - `<img src="이미지경로/파일명.확장자" alt="대체글" />`
 
+### 3.3.5 h 태그(Heading)
+
+- 문서의 타이틀 역할을 함을 표현함.
+- h1 ~ h6 로 구성
+- html 문서에서 h1 은 한번만 사용하기를 권장함.
+- 각 영역별로 h2 도 한번만 사용하기를 권장함.
+
+### 3.3.6 p 태그(Paragraph)
+
+- 글자로 된 문단작성시 활용
+
+### 3.3.7 <br /> 태그
+
+- 한 줄 내림 (안쓰게 되는 경우 React 들어가면 에러 뜸)
+
+### 3.3.8 <b></b> 태그
+
+- 글자를 굵게 표현함
+
+### 3.3.9 <section></section> 태그
+
+- 시멘틱 태그로서 내용 구역 구분
+
 # 4. CSS의 이해
 
 - css 선택자
@@ -640,6 +663,16 @@
   }
 ```
 
+## 4.10 한줄 말 줄임 코드 (...처리)
+
+````css
+선택 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+```
+
 ## 5. JavaScript 의 이해
 
 - Java 는 객체지향프로그래밍, JavaScript 는 스크립트 프로그래밍 (Java 와 JavaScript 는 전혀 다름)
@@ -660,7 +693,7 @@
 
 ```html
 <태그 onload=""onclick="></태그>
-```
+````
 
 ### 5.2.2 태그 방식
 
@@ -834,9 +867,151 @@ for (let i = 0; i < 10; i++) {
 - 웹퍼블리싱에서는 if 문이 90% 이상일 듯 함.
 
 ```js
-if(true 냐 false 냐 조건 판단) {
+if(true 냐 false 이냐 조건 판단) {
   // true 면 실행
 }else{
   // false 면 실행
 }
+```
+
+# 6. Swiper 슬라이드의 이해
+
+- 대표적인 slide 라이브러리
+  └ Swiper (https://swiperjs.com)
+  └ Slick (https://kenwheeler.github.io/slick)
+  └ BxSlider (https://bxslider.com) 가 있음
+
+## 6.1 Swiper 슬라이드를 사용하는 이유
+
+- 안정성, 반응형, 모바일 터치 지원이 된다 (Slick 지원 가능 / BxSlider 지원 불가)
+- React, Vue, Svlet 등의 FrontEnd 기술지원
+- TypeScript 지원 및 예제(例題) 지원
+
+## 6.2 기본적인 기능은 예제에서 확인 후 활용
+
+- https://swiperjs.com/demos
+- Core 소스 : 웹퍼블리싱 참조
+- React 소스 : FE 에서 참조
+
+## 6.3 아주 특별한 기능을 구현하는 경우(예제에선 없는 기능)
+
+- API 문서 참조 : https://swiperjs.com/swiper-api
+
+## 6.4 Core Sample 활용하기 (웹퍼블리싱)
+
+### 6.4.1 html 에 반드시 배치하기 (2줄)
+
+- ※ 반드시 우리의 css와 js 파일 연결 코드보다 윗줄에 있어야 함 ※
+
+```html
+- css 에 반드시 필수로 들어가야 하는 링크 (예시)
+<!-- Link Swiper's CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+- js 에 반드시 필수로 들어가야 하는 링크 (예시)
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+```
+
+### 6.3.2 div class 명에서 절대로 수정하면 안되는 코드
+
+```html
+<div class="swiper mySwiper(개발자클래스명-임의로 바꾸기 가능)">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">내용</div>
+    <div class="swiper-slide">내용</div>
+    <div class="swiper-slide">내용</div>
+  </div>
+</div>
+```
+
+### 6.4.3 swiper 슬라이드가 작동이 되는지 확인부터 하기
+
+- load 는 이미지 등의 용량이 큰 파일이 로드 되면 실행하도록 함
+
+```js
+window.addEventListener("load", function () {
+  // swiper 만들기 실행
+  new Swiper("mySwiper(개발자클래스명)", {});
+});
+```
+
+### 6.4.4 옵션들 (반응형/모바일,화면 줌인,줌아웃 등)
+
+- slidesPerView : 화면당 보여줄 슬라이드 수
+  例) window.addEventListener("load", function () {
+  new Swiper(".sw_tour", {
+  slidesPerView: 3,
+  });
+  });
+  일 경우 화면에 3개가 띄워짐.
+
+![Image](https://github.com/user-attachments/assets/d35676c3-ea5e-471e-a59d-15b687ffcb3f)
+
+- spaceBetween : 슬라이드의 간격(px 단위)
+- slidesPerGroup : 한번 이동시 n개의 슬라이드 이동 갯수
+- breakpoints : 웹브라우저의 넓이(px) 계산 후 배치
+
+```js
+window.addEventListener("load", function () {
+  new Swiper(".sw_tour", {
+    slidesPerView: 1,
+    spaceBetween: 26,
+    slidesPerGroup: 1,
+    //반응형
+    breakpoints: {
+      760: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+      },
+      1280: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+      },
+    },
+  });
+});
+```
+
+- gird 를 이용한 2줄 이상 출력하기
+
+```js
+window.addEventListener("load", function () {
+  new Swiper(".sw_tour", {
+    slidesPerView: 5,
+    grid: {
+      rows(줄 수): 2,
+      fill: "row",
+    },
+    spaceBetween: 26,
+    slidesPerGroup: 1,
+    //반응형
+    breakpoints: {
+      1024: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        1280: {
+          slidesPerView: 3,
+          slidesPerGroup: 3,
+        },
+        grid: {
+          rows: 1,
+          fill: "row",
+        },
+      },
+    },
+  });
+});
+```
+
+- 좌측, 우측 슬라이드 버튼 이동
+- 첫 페이지와, 마지막 페이지에서 버튼 숨기기 적용
+
+```js
+    navigation: {
+      nextEl: "버튼 클래스명(다음)",
+      prevEl: "버튼 클래스명(이전)",
+    },
 ```
