@@ -5,8 +5,8 @@ window.addEventListener("load", function () {
     spaceBetween: 20,
     slidesPerGroup: 1,
     navigation: {
-      nextEl: ".live_slide_next",
-      prevEl: ".live_slide_prev",
+      nextEl: ".ticket_slide_next",
+      prevEl: ".tivket_slide_prev",
     },
     breakpoints: {
       960: {
