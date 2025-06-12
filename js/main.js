@@ -5,10 +5,9 @@ window.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
     const scY = window.scrollY;
     if (scY > 0) {
-      console.log("스크롤 됨");
+      // console.log("스크롤 됨");
     } else {
       main.classList.remove("main_scroll");
     }
   });
 });
-
