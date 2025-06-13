@@ -85,7 +85,7 @@
 - https://velog.io/@clydehan/HTML-DOCTYPE%EC%9D%B4%EB%9E%80
 - `<!DOCTYPE html>`
   └ html 을 해석할 때 최신 html5 규칙으로 해석하라.
-  └ 수정은 수의해서 해야 함.
+  └ 수정은 주의해서 해야 함.
   └ 유지 보수를 하는 경우에는 html 의 첫 줄을 반드시 문의하고 수정해야 함.
   (쇼핑몰 같은 경우 기존에 있던 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 [버전]//EN" "[DTD URL]"> 를 지울 경우 결제가 되지 않은 오류가 발생함.)
 
@@ -673,6 +673,22 @@
 }
 ```
 
+## 4.11 Gradient 온라인 도구
+
+- https://cssgradient.io/
+
+## 4.12 두줄 말 줄임 코드 (...처리)
+
+```css
+  /* 두줄 이상 말 줄임 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  ```
+
+
 ## 5. JavaScript 의 이해
 
 - Java 는 객체지향프로그래밍, JavaScript 는 스크립트 프로그래밍 (Java 와 JavaScript 는 전혀 다름)
@@ -1022,5 +1038,3 @@ window.addEventListener("load", function () {
       prevEl: "버튼 클래스명(이전)",
     },
 ```
-
-

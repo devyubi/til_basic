@@ -8,7 +8,7 @@
 }
 .trip_header_title {
   display: flex;
-  gap: 3px;
+  gap: 10px;
   align-items: center;
   justify-content: center;
 }
@@ -27,23 +27,122 @@
   gap: 20px;
 }
 .trip_slide_item {
+  position: relative;
   display: block;
   border: 1px solid #f0f0f0;
   width: 100%;
-  height: 400px;
+
+  max-height: 400px;
+  height: 31.25vw;
+
   border-radius: 11px;
+}
+.trip_image {
+  max-height: 245px;
+  height: 61.25%;
+  border-radius: 11px 11px 0 0;
+  overflow: hidden;
+}
+.trip_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.trip_info {
+  position: relative;
+  padding: 20px 25px;
+  /* height: calc(100% - 245px); */
+  height: 38.25%;
+  border: 1px solid #f0f0f0;
+  border-top: none;
+  border-radius: 0 0 11px 11px;
+}
+.trip_icon {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1c1c1e;
+
+  height: 24px;
+  border-radius: 12px;
+  padding: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #4ed8eb 0.08%,
+    #c9d8f4 21.6%,
+    #fbeaf0 42.04%,
+    #c0f3f3 65.17%,
+    #a9eeee 83.46%,
+    #5cf3dc 103.36%
+  );
+}
+.trip_icon img {
+}
+.trip_item_title {
+  font-size: 17px;
+  font-weight: 400;
+  color: #1c1c1e;
+  /* 행간 */
+  line-height: 1.6;
+
+  /* 두줄 이상 말 줄임 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.trip_schedule {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  padding: 5px 0;
+}
+.trip_schedule span {
+  position: relative;
+  padding-right: 11px;
+}
+.trip_schedule span::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  transform: translateX(-5px);
+  top: 50%;
+  width: 2px;
+  height: 2px;
+  background-color: #868686;
+}
+.trip_schedule span:last-child::before {
+  display: none;
+}
+.trip_price {
+  font-size: 18px;
+  color: #000;
+  font-weight: 400;
+}
+.trip_price b {
+  font-size: 20px;
+  font-weight: 700;
+}
+.trip_price img {
 }
 .trip_slide_prev {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e5e5e5;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.13);
   /* 중앙, 앱솔루트 */
   position: absolute;
   top: 50%;
   left: 0;
-  z-index: 100;
+  z-index: 999;
   width: 48px;
   height: 48px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -63,7 +162,7 @@
   position: absolute;
   top: 50%;
   right: 0;
-  z-index: 100;
+  z-index: 999;
   width: 48px;
   height: 48px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -81,7 +180,7 @@
   gap: 7px;
   align-items: center;
   justify-content: center;
-  padding: 0 40px;
+  padding: 0px 40px;
   border: 1px solid #e5e5e5;
   height: 56px;
   background-color: #fff;
@@ -89,5 +188,45 @@
   font-size: 16px;
   font-weight: 700;
   color: #333;
-  border-radius: 28px;
+  border-radius: 23px;
+}
+
+/* 반응형 */
+
+@media all and (max-width: 1280px) {
+}
+@media all and (max-width: 1100px) {
+  .trip_info {
+    padding: 15px 25px;
+  }
+  .trip_schedule {
+    padding: 0px;
+  }
+}
+@media all and (max-width: 990px) {
+  .trip_item_title {
+    font-size: 17px;
+    line-height: 1.3;
+  }
+}
+@media all and (max-width: 1024px) {
+}
+@media all and (max-width: 960px) {
+  .trip_item_title {
+    white-space: nowrap;
+    line-height: 1.6;
+  }
+}
+@media all and (max-width: 900px) {
+  .trip_slide_item {
+    height: 270px;
+  }
+  .trip_schedule {
+    overflow: hidden;
+  }
+  .trip_schedule span {
+    white-space: nowrap;
+  }
+}
+@media all and (max-width: 760px) {
 }

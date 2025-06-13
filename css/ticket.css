@@ -18,12 +18,12 @@
   text-align: center;
 }
 .ticket_subtitle {
-  font-size: 18px;
   margin-bottom: 20px;
+  font-size: 18px;
   color: rgba(18, 18, 18, 0.5);
   text-align: center;
 }
-.tour_top_category {
+.ticket_top_category {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -56,10 +56,10 @@
   opacity: 0.65;
 }
 .ticket_focus {
+  border: 1px solid #333 !important;
   background-color: #333 !important;
   color: #fff !important;
   pontweight: 600 !important;
-  border: 1px solid #333 !important;
 }
 .ticket_bottom {
   display: block;
@@ -76,50 +76,122 @@
 }
 .ticket_slide_item {
   display: block;
+
   overflow: hidden;
   width: 100%;
-  height: 365px;
-  border-radius: 12px;
-}
 
-.ticket_slide_item_info {
-  padding: 20px;
-  border: 1px solid #f0f0f0;
-  border-top: none;
+  border-radius: 11px;
+}
+.ticket_image {
   position: relative;
-  border-radius: 0px 0px 12px 12px;
-}
-.ticket_item_name {
   overflow: hidden;
-  word-break: break-all;
-  text-overflow: ellipsis;
-
-  font-size: 15px;
-
-  color: #111;
-  cursor: pointer;
+  max-height: 400px;
+  /* height: 400px; */
+  height: 31.25vw;
+  border-radius: 11px;
 }
+.ticket_image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* 그라데이션 */
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04)),
+    linear-gradient(180deg, transparent 68.5%, rgba(0, 0, 0, 0.6));
+}
+.ticket_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ticket_rank {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  font-size: 70px;
+  color: #fff;
+  font-weight: 700;
+  z-index: 10;
+}
+.ticket_info {
+  height: 28%;
+  min-height: 154px;
+  padding: 15px 20px;
+  position: relative;
+}
+.ticket_item_title {
+  overflow: hidden;
+  font-size: 18px;
+  color: #111;
+  font-weight: 700;
+  line-height: 1.3;
+  /* 타이틀이 긴 경우 두줄만 보이게 함 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.ticket_place {
+  font-size: 16px;
+  color: #666;
+  font-weight: 400;
+  padding: 5px 0;
+  /* 타이틀이 긴 경우 한줄만 보이게 함 */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ticket_date {
+  font-size: 14px;
+  color: #999;
+  font-weight: 400;
+}
+.ticket_option {
+  display: flex;
+  gap: 5px;
+  padding: 7px 0;
+}
+.ticket_option span {
+  font-size: 11px;
+  font-weight: 400;
+}
+.ticket_red {
+  border: 1px solid #ef3243;
+  color: #ef3243;
+  padding: 5px;
+  border-radius: 2px;
+}
+.ticket_blue {
+  border: 1px solid #4a95ff;
+  color: #4a95ff;
+  padding: 5px;
+  border-radius: 2px;
+}
+
 .ticket_item_place {
 }
 .ticket_item_date {
 }
 
 .ticket_slide_prev {
-  z-index: 999;
   display: flex;
   align-items: center;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  display: flex;
   justify-content: center;
   border: 1px solid #e5e5e5;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.13);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 999;
   width: 48px;
   height: 48px;
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
+  transform: translateY(-50%) translateX(-50%);
   border-radius: 24px;
 }
 
@@ -128,16 +200,16 @@
 }
 
 .ticket_slide_next {
-  position: relative;
-  z-index: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #e5e5e5;
+  position: relative;
 
   position: absolute;
   top: 50%;
   right: 0px;
+  z-index: 999px;
   z-index: 100;
 
   width: 48px;
@@ -150,21 +222,33 @@
   border-radius: 24px;
 }
 .ticket_home {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 .ticket_home_bt {
   display: flex;
-  align-items: center;
   gap: 7px;
-  height: 56px;
-  border-radius: 23px;
+  align-items: center;
   padding: 0 40px;
   border: 1px solid #e5e5e5;
+  height: 56px;
   background-color: #fff;
   font-size: 16px;
-  color: #333;
   font-weight: 700;
+  color: #333;
+  border-radius: 23px;
   border-radius: 200px;
+}
+
+/* 반응형 */
+@media all and (max-width: 1280) {
+}
+@media all and (max-width: 1080) {
+}
+@media all and (max-width: 1024) {
+}
+@media all and (max-width: 960) {
+}
+@media all and (max-width: 760) {
 }
