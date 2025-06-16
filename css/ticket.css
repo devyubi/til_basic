@@ -1,19 +1,20 @@
 .ticket {
   position: relative;
+  border-top: 8px solid #f0f4f4;
+  padding-top: 60px;
 }
 .layout {
   margin: 0 auto;
   width: 100%;
   max-width: 1280px;
 }
-.ticket.top {
+.ticket_top {
 }
 .ticket_top_title {
   display: block;
   width: 100%;
 }
 .ticket_title {
-  padding-top: 65px;
   font-size: 28px;
   text-align: center;
 }
@@ -51,6 +52,7 @@
   color: #111;
   cursor: pointer;
   border-radius: 22px;
+  white-space: nowrap;
 }
 .ticket_category_list li button:active {
   opacity: 0.65;
@@ -230,6 +232,8 @@
   display: flex;
   gap: 7px;
   align-items: center;
+  justify-content: center;
+
   padding: 0 40px;
   border: 1px solid #e5e5e5;
   height: 56px;
@@ -242,13 +246,57 @@
 }
 
 /* 반응형 */
-@media all and (max-width: 1280) {
+@media all and (max-width: 1280px) {
 }
-@media all and (max-width: 1080) {
+@media all and (max-width: 1080px) {
 }
-@media all and (max-width: 1024) {
+@media all and (max-width: 1024px) {
+  .ticket {
+    padding-top: 20px;
+    border-top: 8px solid #f0f4f4;
+  }
+  .ticket_top_title {
+    font-size: 20px;
+  }
+  .ticket_title {
+    font-size: 20px;
+  }
+
+  .ticket_subtitle {
+    padding-top: 0;
+    font-size: 15px;
+  }
+  .ticket_top_category {
+    margin-bottom: 20px;
+  }
+  .ticket_category_list li button {
+    height: 34px;
+  }
+  .ticket_info {
+    padding: 10px 10px;
+  }
+  .ticket_slide_item {
+  }
+  .ticket_item_title {
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .ticket_home_bt {
+    width: 100%;
+    border-radius: 4px;
+    height: 48px;
+    padding-top: 0px;
+  }
+  .ticket_home {
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
+  .ticket_slide_next,
+  .ticket_slide_prev {
+    display: none;
+  }
 }
-@media all and (max-width: 960) {
+@media all and (max-width: 960px) {
 }
-@media all and (max-width: 760) {
+@media all and (max-width: 760px) {
 }

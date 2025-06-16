@@ -213,13 +213,46 @@
 }
 
 /* 반응형 */
-@media all and (max-height: 1280px) {
-}
-@media all and (max-height: 1080px) {
-}
 @media all and (max-height: 1024px) {
-}
-@media all and (max-height: 960px) {
-}
-@media all and (max-height: 760px) {
+  .live {
+    border-top: 8px solid #f0f4f4;
+    padding-top: 20px;
+  }
+  .live_info {
+    padding: 10px;
+  }
+  .live_wait {
+    font-size: 10px;
+    font-weight: 400;
+    padding: 0 10px;
+    height: 20px;
+  }
+  .live_item_title {
+    font-size: 14px;
+  }
+  .live_day_date {
+    font-size: 18px;
+  }
+
+  .live_day_time {
+    font-size: 30px;
+  }
+  .live_detail {
+    padding: 10px;
+  }
+  .live_detail_image {
+    width: 40px;
+    height: 40px;
+  }
+  .live_detail_title {
+    font-size: 13px;
+  }
+  .live_more_bt {
+    width: 100%;
+    border-radius: 4px;
+  }
+  .live_slide_next,
+  .live_slide_prev {
+    display: none;
+  }
 }

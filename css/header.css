@@ -10,7 +10,6 @@
 }
 
 .layout {
-
   /* 
   margin-left: auto;
   margin-top: 0;
@@ -59,7 +58,6 @@
 }
 
 .search {
-
   display: flex;
   align-items: center;
   padding-right: 25px;
@@ -78,7 +76,6 @@
 }
 
 .search form {
-
   display: flex;
   align-items: center;
   flex: 1;
@@ -128,7 +125,6 @@
 }
 
 .link_site_line::after {
-
   position: absolute;
   top: 4px;
   right: -10px;
@@ -147,7 +143,6 @@
 }
 
 .main_menu li a {
-
   display: flex;
   align-items: center;
 
@@ -159,7 +154,6 @@
 }
 
 .focus::after {
-
   position: absolute;
   bottom: 0;
   left: 0;
@@ -195,7 +189,6 @@
 
 /*모바일 메뉴*/
 .mobile_header {
-
   display: none;
   padding: 15px 20px;
   position: fixed;
@@ -205,7 +198,9 @@
   width: 100%;
   background-color: #ffffff;
 }
-
+.mobile_scroll_line {
+  border-bottom: 1px solid #dfdfdf;
+}
 .mobile_menu {
   display: flex;
   gap: 30px;
