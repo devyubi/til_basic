@@ -227,13 +227,13 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .ticket_home_bt {
   display: flex;
   gap: 7px;
   align-items: center;
   justify-content: center;
-
   padding: 0 40px;
   border: 1px solid #e5e5e5;
   height: 56px;
