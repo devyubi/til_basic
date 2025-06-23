@@ -1,11 +1,11 @@
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", () => {
   // main
-  const main = this.document.querySelector(".main");
+  const main = document.querySelector(".main");
   // 윈도우 스크롤 체크
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", () => {
     const scY = window.scrollY;
     if (scY > 0) {
-      // console.log("스크롤 됨");
+      main.classList.add("main_scroll");
     } else {
       main.classList.remove("main_scroll");
     }

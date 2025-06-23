@@ -1,5 +1,17 @@
+declare var Swiper: any;
+
 window.addEventListener("load", () => {
   // 데이터
+  type TripDataType = {
+    링크: string;
+    이미지: string;
+    alt: string;
+    대상: string;
+    상품타이틀: string;
+    스케줄: string[];
+    상품가격?: string;
+    정상가: string;
+  };
   const tripApiData = [
     {
       링크: "#",
@@ -11,6 +23,7 @@ window.addEventListener("load", () => {
         "[영어캠프홀릭] 사이판 2주, 명문 국제 사립학교 커리큘럼 스쿨링 영어캠프",
       스케쥴: ["13박 14일", "인천 출발", "노쇼핑"],
       상품가격: "2,600,000",
+      정상가: "",
     },
     {
       링크: "#",
@@ -46,6 +59,7 @@ window.addEventListener("load", () => {
         "[영어캠프홀릭]일본 오키나와 1주 영어캠프, 25년 여름방학 맞이 오키나와 놀이형 영어캠프",
       스케쥴: ["6박 7일", "노쇼핑"],
       상품가격: "2,150,000",
+      정상가: "",
     },
     {
       링크: "#",
@@ -92,12 +106,15 @@ window.addEventListener("load", () => {
         "[베스트셀러/W트립] 4성급 밍가든VS판보르네오 호핑+자유일정 포함 코타키나발루 5일",
       스케쥴: ["3박 5일", "인천 출발", "제주 항공", "쇼핑3회"],
       상품가격: "239,000",
+      정상가: "",
     },
   ];
 
   // html 태그 만들고 배치하기
-  const tripPos = document.querySelector(".sw_trip .swiper-wrapper");
-  let html = `
+  const tripPos: Element | null = document.querySelector(
+    ".sw_trip .swiper-wrapper"
+  );
+  let html: string = `
   <div class="swiper-slide">
     <a href="${tripApiData[0].링크}" class="trip_slide_item">
       <div class="trip_image">
@@ -132,73 +149,77 @@ window.addEventListener("load", () => {
 
   // 실제 데이터 개수 만큼 swiper-slide 태그 만들어 배치하기
   html = "";
-  for (let i = 0; i < tripApiData.length; i++) {
-    let tag = `
-      <div class="swiper-slide">
-    <a href="${tripApiData[i].링크}" class="trip_slide_item">
-      <div class="trip_image">
-        <img
-          src="${tripApiData[i].이미지}"
-          alt="${tripApiData[i].alt}"
-        />
+  function makeHtml(): void {
+    for (let i: number = 0; i < tripApiData.length; i++) {
+      let tag: string = `
+          <div class="swiper-slide">
+        <a href="${tripApiData[i].링크}" class="trip_slide_item">
+          <div class="trip_image">
+            <img
+              src="${tripApiData[i].이미지}"
+              alt="${tripApiData[i].alt}"
+            />
+          </div>
+          <div class="trip_info">
+            <div class="trip_icon">
+              <img src="images/icon_w_logo_new.svg" alt="trip" />
+              ${tripApiData[i].대상}
+            </div>
+            <p class="trip_item_title">
+              ${tripApiData[i].상품타이틀}
+            </p>
+            <p class="trip_schedule">
+            `;
+
+      for (let j: number = 0; j < tripApiData[i].스케쥴.length; j++) {
+        tag = tag + `<span>${tripApiData[i].스케쥴[j]}</span>`;
+      }
+
+      tag =
+        tag +
+        `</p>
+            <p class="trip_price">
+              <b>${tripApiData[i].상품가격}</b>
+              원~
+              <span class="m_line">${tripApiData[i].정상가}</span>
+            </p>
+          </div>
+        </a>
       </div>
-      <div class="trip_info">
-        <div class="trip_icon">
-          <img src="images/icon_w_logo_new.svg" alt="trip" />
-          ${tripApiData[i].대상}
-        </div>
-        <p class="trip_item_title">
-          ${tripApiData[i].상품타이틀}
-        </p>
-        <p class="trip_schedule">
         `;
 
-    for (let j = 0; j < tripApiData[i].스케쥴.length; j++) {
-      tag = tag + `<span>${tripApiData[i].스케쥴[j]}</span>`;
+      html = html + tag;
     }
-
-    tag =
-      tag +
-      `</p>
-        <p class="trip_price">
-          <b>${tripApiData[i].상품가격}</b>
-          원~
-          <span class="m_line">${tripApiData[i].정상가}</span>
-        </p>
-      </div>
-    </a>
-  </div>
-    `;
-
-    html = html + tag;
+    tripPos!.innerHTML = html;
   }
 
-  console.log("만들어진 태그 : ", html);
-
-  tripPos.innerHTML = html;
-
   // swiper 만들기 실행
-  new Swiper(".sw_trip", {
-    slidesPerView: 5,
-    spaceBetween: 10,
-    slidesPerGroup: 1,
-    navigation: {
-      nextEl: ".trip_slide_next",
-      prevEl: ".trip_slide_prev",
-    },
-    breakpoints: {
-      960: {
-        slidesPerView: 2,
-        spaceBetween: 20,
+  function makeSlide() {
+    new Swiper(".sw_trip", {
+      slidesPerView: 5,
+      spaceBetween: 10,
+      slidesPerGroup: 1,
+      navigation: {
+        nextEl: ".trip_slide_next",
+        prevEl: ".trip_slide_prev",
       },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 20,
+      breakpoints: {
+        960: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1280: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
       },
-      1280: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-      },
-    },
-  });
+    });
+  }
+
+  makeHtml();
+  makeSlide();
 });
