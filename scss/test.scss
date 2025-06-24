@@ -1,0 +1,34 @@
+// 중첩 (Nesting)
+.card {
+  border: 1px solid #000;
+  .title {
+    position: relative;
+    font-weight: 700;
+    &:hover {
+      // hover : 마우스 커서를 올렸을 때
+      color: aqua;
+    }
+    &:active {
+      color: antiquewhite;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background-color: red;
+    }
+  }
+  .content {
+    color: orange;
+    button {
+      border: 1px solid greenyellow;
+
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
+}
