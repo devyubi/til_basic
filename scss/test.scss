@@ -1,34 +1,30 @@
-// 중첩 (Nesting)
-.card {
-  border: 1px solid #000;
-  .title {
-    position: relative;
-    font-weight: 700;
-    &:hover {
-      // hover : 마우스 커서를 올렸을 때
-      color: aqua;
-    }
-    &:active {
-      color: antiquewhite;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 32px;
-      height: 32px;
-      background-color: red;
-    }
-  }
-  .content {
-    color: orange;
-    button {
-      border: 1px solid greenyellow;
+// val 에 _ (언더바) 붙이지 말기.
+@import "val";
+@import "mixins";
 
-      &:hover {
-        background-color: red;
+.wrap {
+  position: relative;
+  // mixin 사용
+  @include flex-center;
+
+  width: $width-screen;
+  .inner {
+    @include border-fn("red");
+    .header {
+      // 변수 사용하기
+      width: $width-screen;
+      .inner {
+        // mixin 사용
+        @include flex-center;
+        // 변수 사용하기
+        width: $pc-w;
       }
     }
+  }
+  .main {
+    width: $width-screen;
+  }
+  .footer {
+    width: $width-screen;
   }
 }

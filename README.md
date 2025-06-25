@@ -1041,30 +1041,32 @@ window.addEventListener("load", function () {
 
 # 7. SCSS
 
-## 7.1 VSCode 컴파일 플러그인 설치
+## 7.1. VSCode 컴파일 플러그인 설치
 
 - `Live Sass Compiler` 설치
 
-## 7.2 실습 환경
+## 7.2. 실습 환경
 
-- `scss 폴더 만들기`
+- `scss 폴더` 만들기
 - `scss 폴더/test.scss 파일` 만들기
-- 반드시 VSCode 의 하단 바에 `Watch Sass`를 `Watching...` 으로 선택
+- 반드시 VSCode 의 하단 바에 `Watch Sass` 를 `Watching...` 으로 선택
 
-## 7.3 환경 세팅
+## 7.3. 환경 셋팅
 
 - 파일명.scss 는 `scss 폴더`에 보관
 - 파일명.css 는 `css 폴더`에 보관
 
-### 환경설정
+### 환경 설정
 
-![Image](https://github.com/user-attachments/assets/b88c9895-51cc-4e90-998b-f7cd049cfd65)
+![Image](https://github.com/user-attachments/assets/20fa39d9-7526-4fe3-947b-7fb3f2343b46)
 
-- `Settings` 메뉴 선택
-  ![Image](https://github.com/user-attachments/assets/0d03b07a-3883-49fa-9a51-843b1be63c59)
+- `Settings 메뉴` 선택
+
+![Image](https://github.com/user-attachments/assets/3e398aef-8d0f-4175-89bd-7a809788aa10)
+
+- 다음의 코드를 추가한다.
 
 ```json
-// ※쉼표 주의!!!!※
 "liveSassCompile.settings.formats": [
     {
       "format": "expanded",
@@ -1075,10 +1077,11 @@ window.addEventListener("load", function () {
   ]
 ```
 
-## 7.4 기초 문법
+## 7.4. 기초 문법
 
 - 참조 : https://www.heropy.dev/p/Y7OrPe
-- 중첩(Nesting)
+
+### 7.4.1. 중첩(Nesting)
 
 ```scss
 // 중첩 (Nesting)
@@ -1088,11 +1091,10 @@ window.addEventListener("load", function () {
     position: relative;
     font-weight: 700;
     &:hover {
-      // hover : 마우스 커서를 올렸을 때
-      color: aqua;
+      color: blue;
     }
     &:active {
-      color: antiquewhite;
+      color: orange;
     }
     &::after {
       content: "";
@@ -1107,7 +1109,7 @@ window.addEventListener("load", function () {
   .content {
     color: orange;
     button {
-      border: 1px solid greenyellow;
+      border: 1px solid green;
 
       &:hover {
         background-color: red;
@@ -1118,7 +1120,6 @@ window.addEventListener("load", function () {
 ```
 
 ```css
-/* 위의 결과 */
 .card {
   border: 1px solid #000;
 }
@@ -1127,10 +1128,10 @@ window.addEventListener("load", function () {
   font-weight: 700;
 }
 .card .title:hover {
-  color: aqua;
+  color: blue;
 }
 .card .title:active {
-  color: antiquewhite;
+  color: orange;
 }
 .card .title::after {
   content: "";
@@ -1145,9 +1146,134 @@ window.addEventListener("load", function () {
   color: orange;
 }
 .card .content button {
-  border: 1px solid greenyellow;
+  border: 1px solid green;
 }
 .card .content button:hover {
   background-color: red;
 } /*# sourceMappingURL=test.css.map */
+```
+
+### 7.4.2. 변수
+
+```scss
+// 변수 만들기
+$width-screen: 960px;
+$pc-w: 760px;
+
+.wrap {
+  position: relative;
+  // 변수 사용하기
+  width: $width-screen;
+  .header {
+    // 변수 사용하기
+    width: $width-screen;
+    .inner {
+      // 변수 사용하기
+      width: $pc-w;
+    }
+  }
+  .main {
+    // 변수 사용하기
+    width: $width-screen;
+  }
+  .footer {
+    // 변수 사용하기
+    width: $width-screen;
+  }
+}
+```
+
+### 7.4.3. 변수를 모으고 다른 scss 에서 사용하기
+
+- css 로 생성할 필요가 없는 경우 `_파일명.scss` 생성
+- scss 폴더에 `_val.scss` 파일만듦. (파일명은 자유)
+
+```scss
+$width-screen: 960px;
+$pc-w: 760px;
+```
+
+- 변수 사용시 `@import "val";` `_ ` 반드시 제거하고 파일명만 적작
+
+```scss
+@import "val";
+
+.wrap {
+  position: relative;
+  // 변수 사용하기
+  width: $width-screen;
+  .header {
+    // 변수 사용하기
+    width: $width-screen;
+    .inner {
+      // 변수 사용하기
+      width: $pc-w;
+    }
+  }
+  .main {
+    // 변수 사용하기
+    width: $width-screen;
+  }
+  .footer {
+    // 변수 사용하기
+    width: $width-screen;
+  }
+}
+```
+
+### 7.4.4. 함수(Mixins) 사용하기
+
+- 파일명을 `_`를 활용하자. (`scss/_mixins.scss`)
+
+```scss
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin border-fn($cc) {
+  border: 5px solid $cc;
+}
+```
+
+- 아래처럼 불러들임
+
+```scss
+@import "val";
+@import "mixins";
+```
+
+```scss
+@import "val";
+@import "mixins";
+
+.wrap {
+  position: relative;
+  // mixin 사용
+  @include flex-center;
+
+  // 변수 사용하기
+  width: $width-screen;
+  .header {
+    // mixin 사용
+    @include flex-center;
+    // 변수 사용하기
+    width: $width-screen;
+    .inner {
+      @include border-fn(red);
+      height: 100px;
+      // 변수 사용하기
+      width: $pc-w;
+    }
+  }
+  .main {
+    @include border-fn(#ffffff);
+    // 변수 사용하기
+    width: $width-screen;
+  }
+  .footer {
+    // 변수 사용하기
+    width: $width-screen;
+  }
+}
 ```
