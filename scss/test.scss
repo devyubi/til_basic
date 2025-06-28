@@ -1,0 +1,30 @@
+// val 에 _ (언더바) 붙이지 말기.
+@import "val";
+@import "mixins";
+
+.wrap {
+  position: relative;
+  // mixin 사용
+  @include flex-center;
+
+  width: $width-screen;
+  .inner {
+    @include border-fn("red");
+    .header {
+      // 변수 사용하기
+      width: $width-screen;
+      .inner {
+        // mixin 사용
+        @include flex-center;
+        // 변수 사용하기
+        width: $pc-w;
+      }
+    }
+  }
+  .main {
+    width: $width-screen;
+  }
+  .footer {
+    width: $width-screen;
+  }
+}

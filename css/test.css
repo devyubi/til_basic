@@ -1,0 +1,16 @@
+.wrap {
+  position: relative;
+  width: 960px;
+}
+.wrap .header {
+  width: 960px;
+}
+.wrap .header .inner {
+  width: 760px;
+}
+.wrap .main {
+  width: 960px;
+}
+.wrap .footer {
+  width: 960px;
+}/*# sourceMappingURL=test.css.map */
