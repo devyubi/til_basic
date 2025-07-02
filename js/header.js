@@ -1,4 +1,4 @@
-console.log("header.js 코드 실행");
+// console.log("header.js 코드 실행");
 
 // html 의 태그구조를 모두 읽어들였다면 그때 찾으시오.
 
@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //스크롤바의 최상단
     const scY = window.scrollY;
     if (scY > 0) {
-      console.log("스크롤되었다.");
+      // console.log("스크롤되었다.");
       headderTop.classList.add("header_top_scroll");
       logo.classList.add("logo_hide");
       sale.classList.add("sale_hide");
@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
       });
       mobileHeader.classList.add("mobile_scroll_line");
     } else {
-      console.log("스크롤 최상단!!!");
+      // console.log("스크롤 최상단!!!");
       headderTop.classList.remove("header_top_scroll");
       logo.classList.remove("logo_hide");
       sale.classList.remove("sale_hide");
