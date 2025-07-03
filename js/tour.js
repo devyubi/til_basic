@@ -1,11 +1,11 @@
 window.addEventListener("DOMContentLoaded", function () {
   // 1. 데이터 부르기
   const TOUR_DATA_JSON = [
-    tour.json,
-    tour.json,
-    tour.json,
-    tour.json,
-    tour.json,
+    "tour.json",
+    "tour.json",
+    "tour.json",
+    "tour.json",
+    "tour.json",
   ];
   async function getData(file) {
     try {
@@ -62,6 +62,7 @@ window.addEventListener("DOMContentLoaded", function () {
       slidesPerView: 3,
       grid: {
         rows: 2,
+        fill: "row",
       },
       spaceBetween: 10,
       slidesPerGroup: 1,
